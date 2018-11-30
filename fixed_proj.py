@@ -10,7 +10,7 @@ class HadamardProj(nn.Module):
         super(HadamardProj, self).__init__()
         self.output_size = output_size
         self.input_size = input_size
-        sz = 2 ** int(math.ceil(math.log(max(input_size, output_size), 2)))
+        sz = 2 ** int(math.ceil(math.log(max(input_size, output_size), 2)))  # since size needs to be a multiple of 4
         mat = torch.from_numpy(hadamard(sz))
         if fixed_weights:
             self.proj = Variable(mat, requires_grad=False)
